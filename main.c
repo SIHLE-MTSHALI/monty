@@ -90,6 +90,7 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int, const char *)
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
+		{"pop", pop},
 		{NULL, NULL}
 	};
 	int i;

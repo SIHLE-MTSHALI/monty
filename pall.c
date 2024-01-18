@@ -1,17 +1,16 @@
 #include "monty.h"
 
-/**
- * pall - prints all the values on the stack
- * @stack: double pointer to the head of the stack
- * @line_number: script line number
- */
+/* pall.c: Implements the 'pall' opcode to print all stack elements */
+
 void pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack;
+	stack_t *current = *stack;
 
-	while (temp != NULL)
+	(void)line_number; /* To avoid unused parameter warning */
+
+	while (current != NULL)
 	{
-		printf("%d\n", temp->n);
-		temp = temp->next;
+		printf("%d\n", current->n);
+		current = current->next;
 	}
 }

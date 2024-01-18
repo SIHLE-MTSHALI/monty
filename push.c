@@ -1,17 +1,19 @@
 #include "monty.h"
 
-/* push.c: Implements the 'push' opcode to push an element to the stack */
-
+/* 
+ * push - Pushes an element to the stack.
+ * @stack: Double pointer to the stack.
+ * @line_number: Line number in the script for error reporting.
+ * @n: The integer to be pushed onto the stack.
+ */
 void push(stack_t **stack, unsigned int line_number, const int n)
 {
 	stack_t *new_node;
 
-	(void)line_number; /* To avoid unused parameter warning */
-
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
+		fprintf(stderr, "L%d: Error: malloc failed\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

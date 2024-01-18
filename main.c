@@ -1,9 +1,12 @@
 #define _POSIX_C_SOURCE 200809L
 #include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "monty.h"
 
 void free_stack(stack_t *stack);
-void (*get_op_func(char *opcode))(stack_t **, unsigned int);
+void (*get_op_func(char *opcode))(stack_t **, unsigned int, const char *);
 
 /**
  * main - Entry point for the Monty bytecode interpreter
@@ -14,12 +17,12 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int);
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line = NULL, *opcode;
+	char *line = NULL, *opcode, *arg;
 	size_t len = 0;
 	ssize_t read;
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
-	void (*op_func)(stack_t **, unsigned int);
+	void (*op_func)(stack_t **, unsigned int, const char *);
 
 	if (argc != 2)
 	{
@@ -50,7 +53,8 @@ int main(int argc, char *argv[])
 			fclose(file);
 			exit(EXIT_FAILURE);
 		}
-		op_func(&stack, line_number);
+		arg = strtok(NULL, " \n\t");
+		op_func(&stack, line_number, arg);
 	}
 
 	free(line);
@@ -80,7 +84,7 @@ void free_stack(stack_t *stack)
  * @opcode: Opcode to parse
  * Return: Pointer to the function corresponding to the opcode
  */
-void (*get_op_func(char *opcode))(stack_t **, unsigned int)
+void (*get_op_func(char *opcode))(stack_t **, unsigned int, const char *)
 {
 	instruction_t ops[] = {
 		{"push", push},

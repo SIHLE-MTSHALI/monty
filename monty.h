@@ -43,6 +43,7 @@ void div_op(stack_t **stack, unsigned int line_number, const char *arg);
 void mul(stack_t **stack, unsigned int line_number, const char *arg);
 void mod(stack_t **stack, unsigned int line_number, const char *arg);
 void pchar(stack_t **stack, unsigned int line_number, const char *arg);
+void pstr(stack_t **stack, unsigned int line_number, const char *arg);
 
 
 

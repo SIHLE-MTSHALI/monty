@@ -39,22 +39,22 @@ int main(int argc, char *argv[])
 
 	while ((read = getline(&line, &len, file)) != -1)
 	{
-		line_number++;
-		opcode = strtok(line, " \n\t");
-		if (!opcode || opcode[0] == '#')
-			continue;
+	line_number++;
+	opcode = strtok(line, " \n\t");
+	if (!opcode || opcode[0] == '#' || opcode[0] == '\n')
+		continue;
 
-		op_func = get_op_func(opcode);
-		if (!op_func)
-		{
-			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
-			free(line);
-			free_stack(stack);
-			fclose(file);
-			exit(EXIT_FAILURE);
-		}
-		arg = strtok(NULL, " \n\t");
-		op_func(&stack, line_number, arg);
+	op_func = get_op_func(opcode);
+	if (!op_func)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		free(line);
+		free_stack(stack);
+		fclose(file);
+		exit(EXIT_FAILURE);
+	}
+	arg = strtok(NULL, " \n\t");
+	op_func(&stack, line_number, arg);
 	}
 
 	free(line);

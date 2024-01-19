@@ -38,6 +38,7 @@ void pop(stack_t **stack, unsigned int line_number, const char *arg);
 void swap(stack_t **stack, unsigned int line_number, const char *arg);
 void add(stack_t **stack, unsigned int line_number, const char *arg);
 void nop(stack_t **stack, unsigned int line_number, const char *arg);
+void sub(stack_t **stack, unsigned int line_number, const char *arg);
 
 
 

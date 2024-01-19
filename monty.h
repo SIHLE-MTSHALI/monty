@@ -45,6 +45,7 @@ void mod(stack_t **stack, unsigned int line_number, const char *arg);
 void pchar(stack_t **stack, unsigned int line_number, const char *arg);
 void pstr(stack_t **stack, unsigned int line_number, const char *arg);
 void rotl(stack_t **stack, unsigned int line_number, const char *arg);
+void rotr(stack_t **stack, unsigned int line_number, const char *arg);
 
 
 

@@ -101,6 +101,7 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int, const char *)
 		{"pchar", pchar},
 		{"pstr", pstr},
 		{"rotl", rotl},
+		{"rotr", rotr},
 		{NULL, NULL}
 	};
 	int i;

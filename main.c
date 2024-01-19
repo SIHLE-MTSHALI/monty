@@ -97,6 +97,7 @@ void (*get_op_func(char *opcode))(stack_t **, unsigned int, const char *)
 		{"sub", sub},
 		{"div", div_op},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}
 	};
 	int i;
